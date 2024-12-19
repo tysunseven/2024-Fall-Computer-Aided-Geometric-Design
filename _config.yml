@@ -1,0 +1,10 @@
+title: "2024 Fall Computer Aided Geometric Design"
+author: "Tianyang Sun"
+logo: ""
+repository:
+  url: "https://github.com/tysunseven/2024-Fall-Computer-Aided-Geometric-Design"
+  path_to_book: ""
+
+exclude_patterns:
+  - "venv/**"
+  - README.md

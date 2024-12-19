@@ -1,0 +1,7 @@
+format: jb-book
+root: content/introduction
+chapters:
+  - file: content/chapter1
+    title: 贝塞尔曲线
+  - file: content/chapter2
+    title: B样条曲线
