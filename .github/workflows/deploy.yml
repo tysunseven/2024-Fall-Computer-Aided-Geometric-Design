@@ -1,46 +1,24 @@
-name: Deploy Voila and Jupyter Book to GitHub Pages
-
+name: Deploy Jupyter Book to GitHub Pages
 on:
   push:
     branches:
       - main
-
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.8'
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install jupyter-book numpy matplotlib voila jupyter ipywidgets
-
+        pip install jupyter-book
     - name: Build Jupyter Book
       run: jupyter-book build .
-
-    - name: Run Voila to generate static content
-      run: |
-        # 确保 notebook 文件存在并列出内容
-        ls -l content
-        # 运行 Voilà 生成静态页面
-        voila content/chapter1.ipynb --template=lab --no-browser --port=8888 &
-        sleep 10  # 等待 Voilà 启动
-        
-        # 确认 _voila 文件夹是否存在并查看其内容
-        ls -l _voila
-        
-        # 将 Voilà 结果复制到正确的输出目录
-        mkdir -p _build/html
-        cp -r _voila/* _build/html/
-
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
