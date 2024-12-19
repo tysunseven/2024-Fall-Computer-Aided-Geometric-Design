@@ -28,16 +28,18 @@ jobs:
 
     - name: Run Voila to generate static content
       run: |
-        # List files to ensure the notebook exists
+        # 确保 notebook 文件存在并列出内容
         ls -l content
-        # Run Voila on the correct notebook file from the content directory
+        # 运行 Voilà 生成静态页面
         voila content/chapter1.ipynb --template=lab --no-browser --port=8888 &
-        sleep 10 # Allow time for Voila to start
-        # Check if _voila folder exists and its contents
+        sleep 10  # 等待 Voilà 启动
+        
+        # 确认 _voila 文件夹是否存在并查看其内容
         ls -l _voila
-        # Create output directory and copy Voila results
-        mkdir -p _voila_output
-        cp -r _voila/* _voila_output/
+        
+        # 将 Voilà 结果复制到正确的输出目录
+        mkdir -p _build/html
+        cp -r _voila/* _build/html/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
