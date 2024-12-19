@@ -18,7 +18,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import numpy as np
 import matplotlib.pyplot as plt
 
-# 避免指定中文字体，仅确保负号显示正常哈哈
+# 避免指定中文字体，仅确保负号显示正常
 plt.rcParams['axes.unicode_minus'] = False
 
 # 示例绘图
@@ -37,7 +37,7 @@ plt.close()
 Cell [0;32mIn[1], line 1[0m
 [0;32m----> 1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
 [1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[1;32m      4[0m [38;5;66;03m# 避免指定中文字体，仅确保负号显示正常哈哈[39;00m
+[1;32m      4[0m [38;5;66;03m# 避免指定中文字体，仅确保负号显示正常[39;00m
 
 [0;31mModuleNotFoundError[0m: No module named 'numpy'
 
