@@ -1,4 +1,4 @@
-name: Deploy Jupyter Book to GitHub Pages
+name: Deploy Voila and Jupyter Book to GitHub Pages
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,10 +21,16 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install jupyter-book numpy matplotlib
+        pip install jupyter-book numpy matplotlib voila jupyter ipywidgets
 
     - name: Build Jupyter Book
       run: jupyter-book build .
+
+    - name: Run Voila to generate static content
+      run: |
+        voila your_notebook.ipynb --template=lab --no-browser --port=8888 &
+        sleep 10 # Allow time for Voila to start and generate content
+        cp -r _voila /your-output-directory
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
